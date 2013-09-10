@@ -1,0 +1,6 @@
+*.coffee
+.DS_Store
+.git*
+raw/
+src/
+test/
