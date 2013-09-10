@@ -53,4 +53,13 @@ describe("extractor", function(){
         extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","a","derrota","del","Congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
+    it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
+        var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
+            language: "english",
+            return_changed_case: true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["published","@npmjs","package","extract","keywords","string","http://bit.ly/1edMNx6","#nodejs","#npm"]);
+    });
+
 });
