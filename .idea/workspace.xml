@@ -12,6 +12,7 @@
     <file path="/stopwords.js" changelist="95e23f94-8ce4-4bfb-8948-b74ebeb05283" time="1378823692004" ignored="false" />
     <file path="/es.js" changelist="95e23f94-8ce4-4bfb-8948-b74ebeb05283" time="1378823700791" ignored="false" />
     <file path="/README.md" changelist="95e23f94-8ce4-4bfb-8948-b74ebeb05283" time="1378834513642" ignored="false" />
+    <file path="/.gitignore" changelist="95e23f94-8ce4-4bfb-8948-b74ebeb05283" time="1378834712773" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +41,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".npmignore" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name=".npmignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.npmignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="5" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+            <state line="9" column="17" selection-start="89" selection-end="89" vertical-scroll-proportion="0.222103">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="16" selection-start="89" selection-end="89" vertical-scroll-proportion="0.222103">
+            <state line="8" column="0" selection-start="60" selection-end="107" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,7 +125,6 @@
       <list>
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/.npmignore" />
         <option value="$PROJECT_DIR$/lib/stopwords/english.js" />
         <option value="$PROJECT_DIR$/lib/stopwords/stopwords.js" />
         <option value="$PROJECT_DIR$/Makefile" />
@@ -135,6 +135,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/.npmignore" />
       </list>
     </option>
   </component>
@@ -253,6 +254,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="95e23f94-8ce4-4bfb-8948-b74ebeb05283" name="Default" comment="" />
@@ -414,16 +432,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.npmignore">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="5" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+        <state line="8" column="0" selection-start="60" selection-end="107" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/.npmignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="89" selection-end="89" vertical-scroll-proportion="0.222103">
+        <state line="9" column="17" selection-start="89" selection-end="89" vertical-scroll-proportion="0.222103">
           <folding />
         </state>
       </provider>

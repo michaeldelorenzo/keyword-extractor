@@ -6,5 +6,6 @@ npm-debug.log
 .cache
 .cache/*.*
 
-node_modules
-node_modules/*.*
+/node_modules
+/node_modules/*
+/node_modules/*.*
