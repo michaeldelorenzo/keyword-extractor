@@ -62,4 +62,13 @@ describe("extractor", function(){
         extraction_result.should.eql(["published","@npmjs","package","extract","keywords","string","http://bit.ly/1edMNx6","#nodejs","#npm"]);
     });
 
+    it("it should return an array of 'keywords', without things like parentheses and quotes, for a Tweet", function(){
+        var extraction_result = extractor.extract('RT @joelgascoigne: \"Effective leaders (and brands) repeat themselves to the point where they can barely stand to hear themselves any mor ...',{
+            language: "english",
+            return_changed_case: true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["rt","@joelgascoigne","effective","leaders","brands","repeat","point","barely","stand","hear","mor"]);
+    });
+
 });
