@@ -68,3 +68,9 @@ Parameter Name | Description | Permitted Values
 language       | The stopwords list to use. | _english_ or _spanish_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
 
+## Credits
+
+The initial stopwords lists are taken from the following sources:
+
+- English [https://github.com/huned/node-stopwords/blob/c6f0c44d18a5d4ed18ab1f7c2a906b181e785532/english.js]
+- Spanish [https://stop-words.googlecode.com/svn/trunk/stop-words/stop-words/stop-words-spanish.txt]
