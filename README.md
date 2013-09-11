@@ -72,5 +72,5 @@ return_changed_case | The case of the extracted keywords. Setting the value to _
 
 The initial stopwords lists are taken from the following sources:
 
-- English [https://github.com/huned/node-stopwords/blob/c6f0c44d18a5d4ed18ab1f7c2a906b181e785532/english.js]
+- English [http://jmlr.org/papers/volume5/lewis04a/a11-smart-stop-list/english.stop]
 - Spanish [https://stop-words.googlecode.com/svn/trunk/stop-words/stop-words/stop-words-spanish.txt]
