@@ -71,4 +71,16 @@ describe("extractor", function(){
         extraction_result.should.eql(["rt","@joelgascoigne","effective","leaders","brands","repeat","point","barely","stand","hear","mor"]);
     });
 
+    it("it should not include any numbers in the array of 'keywords'", function(){
+        var extraction_result = extractor.extract("The Black Sox scandal of 1919 saw the lifetime ban of 8 members of the Chicago White Sox.",{
+            language: "english",
+            return_changed_case: true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.indexOf(1920).should.eql(-1);
+        extraction_result.indexOf('1920').should.eql(-1);
+        extraction_result.indexOf(8).should.eql(-1);
+        extraction_result.indexOf('8').should.eql(-1);
+    });
+
 });
