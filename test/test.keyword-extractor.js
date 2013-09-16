@@ -83,4 +83,13 @@ describe("extractor", function(){
         extraction_result.indexOf('8').should.eql(-1);
     });
 
+    it("it should remove any HTML and only return plain text in the 'keywords' array",function(){
+        var extraction_result = extractor.extract("<p><a href='#' title='President Obama'>President Obama</a> <em>woke up</em> <span data-role='dow'>Monday</span> facing a <strong><u>Congressional</u> defeat</strong> that many in both parties believed could hobble his <a href='http://whitehouse.gov'>presidency</a></b>.</p>",{
+            language:"english",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["president","obama","woke","monday","facing","congressional","defeat","parties","believed","hobble","presidency"]);
+    });
+
 });
