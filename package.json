@@ -8,6 +8,9 @@
         "type":       "MIT",
         "url":        "https://github.com/michaeldelorenzo/keyword-extractor/raw/master/LICENSE"
     }],
+    "contributors":   [
+        "Marcos Sanz <marcossanzlatorre@gmail.com> (http://www.mistersanz.com)"
+    ],
     "homepage":       "https://github.com/michaeldelorenzo/keyword-extractor",
     "repository": {
         "type":         "git",
@@ -22,8 +25,8 @@
         "should":   "*"
     },
     "dependencies":{
-        "underscore":              "1.4.4",
-        "underscore.string":       "2.3.0"
+        "underscore":              "1.6.0",
+        "underscore.string":       "2.3.3"
     },
     "engines": {
         "node":       "node >= 0.10.0"
