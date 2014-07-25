@@ -92,4 +92,8 @@ describe("extractor", function(){
         extraction_result.should.eql(["president","obama","woke","monday","facing","congressional","defeat","parties","believed","hobble","presidency"]);
     });
 
+    it("should return an array of stopwords from the getStopwords method", function(){
+        extractor.getStopwords().should.not.be.empty;
+        extractor.getStopwords({language:"english"}).should.not.be.empty;
+    });
 });
