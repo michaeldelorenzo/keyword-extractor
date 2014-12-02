@@ -37,6 +37,7 @@ var sentence = "President Obama woke up Monday facing a Congressional defeat tha
 //  Extract the keywords
 var extraction_result = keyword_extractor.extract(sentence,{
                                                                 language:"english",
+                                                                remove_digits: true,
                                                                 return_changed_case:true
                                                            });
 
