@@ -38,7 +38,9 @@ var sentence = "President Obama woke up Monday facing a Congressional defeat tha
 var extraction_result = keyword_extractor.extract(sentence,{
                                                                 language:"english",
                                                                 remove_digits: true,
-                                                                return_changed_case:true
+                                                                return_changed_case:true,
+                                                                remove_duplicates: false
+
                                                            });
 
 /*
@@ -68,6 +70,7 @@ Parameter Name | Description | Permitted Values
 ---------------|-------------|-----------------
 language       | The stopwords list to use. | _english_ or _spanish_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
+remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults to _false_ )
 
 ## Credits
 
