@@ -5,12 +5,9 @@ describe("extractor", function(){
     it("should respond to the 'extract' method", function(){
         extractor.should.have.property("extract");
     });
-//    it("should throw an error if the language isn't supported", function(){
-//        extractor.extract("  ", {language:"german"}).should.throw();
-//    });
 
     it("should return an empty array for an empty string", function(){
-       extractor.extract("   ").should.be.empty;
+        extractor.extract("   ").should.be.empty;
     });
 
     it("should return an emtpy array for a string that only contains stopwords", function(){
@@ -51,6 +48,24 @@ describe("extractor", function(){
         });
         extraction_result.should.not.be.empty;
         extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","a","derrota","del","Congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+    });
+
+    it("should return an array of 'keywords' for a German string", function(){
+        var extraction_result = extractor.extract("Präsident Obama wachte Montag vor einer Niederlage im Kongress, dass viele in beiden Parteien angenommen, könnte seine Präsidentschaft humpeln",{
+            language:"german",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["präsident", "obama","wachte","montag","niederlage","kongress","parteien","angenommen","präsidentschaft","humpeln"]);
+    });
+
+    it("should return an array of 'keywords' for a German string", function(){
+        var extraction_result = extractor.extract("Präsident Obama wachte Montag vor einer Niederlage im Kongress, dass viele in beiden Parteien angenommen, könnte seine Präsidentschaft humpeln",{
+            language:"german",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["Präsident", "Obama","wachte","Montag","Niederlage","Kongress","Parteien","angenommen","Präsidentschaft","humpeln"]);
     });
 
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
