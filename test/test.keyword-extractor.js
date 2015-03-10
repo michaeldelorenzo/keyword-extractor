@@ -159,8 +159,9 @@ describe("extractor", function(){
     });
 
     it("it should not include any numbers in the array of 'keywords'", function(){
-        var extraction_result = extractor.extract("The Black Sox scandal of 1919 saw the lifetime ban of 8 members of the Chicago White Sox.",{
+        var extraction_result = extractor.extract("The Black Sox scandal of 1920 saw the lifetime ban of 8 members of the Chicago White Sox.",{
             language: "english",
+            remove_digits: true,
             return_changed_case: true
         });
         extraction_result.should.not.be.empty;
