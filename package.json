@@ -3,14 +3,16 @@
     "name":           "keyword-extractor",
     "description":    "Module for creating a keyword array from a string and excluding stop words.",
     "keywords":       ["text", "keyword", "search", "extract"],
-    "version":        "0.0.11",
+    "version":        "0.0.12",
     "licenses":       [{
         "type":       "MIT",
         "url":        "https://github.com/michaeldelorenzo/keyword-extractor/raw/master/LICENSE"
     }],
     "contributors":   [
         "Marcos Sanz <marcossanzlatorre@gmail.com> (http://www.mistersanz.com)",
-	      "d-oliveros (https://github.com/d-oliveros)"
+	      "d-oliveros (https://github.com/d-oliveros)",
+	"Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
+	"janvde (https://github.com/janvde)"
     ],
     "homepage":       "https://github.com/michaeldelorenzo/keyword-extractor",
     "repository": {
