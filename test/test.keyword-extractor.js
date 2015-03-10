@@ -5,12 +5,9 @@ describe("extractor", function(){
     it("should respond to the 'extract' method", function(){
         extractor.should.have.property("extract");
     });
-//    it("should throw an error if the language isn't supported", function(){
-//        extractor.extract("  ", {language:"german"}).should.throw();
-//    });
 
     it("should return an empty array for an empty string", function(){
-       extractor.extract("   ").should.be.empty;
+        extractor.extract("   ").should.be.empty;
     });
 
     it("should return an emtpy array for a string that only contains stopwords", function(){
@@ -53,6 +50,96 @@ describe("extractor", function(){
         extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","a","derrota","del","Congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
+    it("should return an array of 'keywords' for a German string", function(){
+        var extraction_result = extractor.extract("Präsident Obama wachte Montag vor einer Niederlage im Kongress, dass viele in beiden Parteien angenommen, könnte seine Präsidentschaft humpeln",{
+            language:"german",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["präsident", "obama","wachte","montag","niederlage","kongress","parteien","angenommen","präsidentschaft","humpeln"]);
+    });
+
+    it("should return an array of 'keywords' for a German string", function(){
+        var extraction_result = extractor.extract("Präsident Obama wachte Montag vor einer Niederlage im Kongress, dass viele in beiden Parteien angenommen, könnte seine Präsidentschaft humpeln",{
+            language:"german",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["Präsident", "Obama","wachte","Montag","Niederlage","Kongress","Parteien","angenommen","Präsidentschaft","humpeln"]);
+    });
+
+    it("should return an array of 'keywords' for a French string", function(){
+        var extraction_result = extractor.extract("Le président Obama se est réveillé lundi face à une défaite du Congrès que beaucoup dans les deux parties pensent qu'il pourrait entraver sa présidence.",{
+            language:"french",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["président", "obama","réveillé","lundi","face","défaite","congrès","parties","pensent","qu'il","pourrait","entraver","présidence"]);
+    });
+
+    it("should return an array of 'keywords' for a French string", function(){
+        var extraction_result = extractor.extract("Le président Obama se est réveillé lundi face à une défaite du Congrès que beaucoup dans les deux parties pensent qu'il pourrait entraver sa présidence.",{
+            language:"french",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["président", "Obama","réveillé","lundi","face","défaite","Congrès","parties","pensent","qu'il","pourrait","entraver","présidence"]);
+    });
+
+    it("should return an array of 'keywords' for a Italian string", function(){
+        var extraction_result = extractor.extract("Il presidente Obama si svegliò Lunedi di fronte a una sconfitta del Congresso che molti in entrambi i partiti credeva potessero ostacolare la sua presidenza.",{
+            language:"italian",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["presidente","obama","svegliò","lunedi","fronte","sconfitta","congresso","entrambi", "partiti","credeva","potessero", "ostacolare","presidenza"]);
+    });
+
+    it("should return an array of 'keywords' for a Italian string", function(){
+        var extraction_result = extractor.extract("Il presidente Obama si svegliò Lunedi di fronte a una sconfitta del Congresso che molti in entrambi i partiti credeva potessero ostacolare la sua presidenza.",{
+            language:"italian",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["presidente","Obama","svegliò","Lunedi","fronte","sconfitta","Congresso","entrambi", "partiti","credeva","potessero", "ostacolare","presidenza"]);
+    });
+
+    it("should return an array of 'keywords' for a Dutch string", function(){
+        var extraction_result = extractor.extract("President Obama wakker werd maandag geconfronteerd met een Congressional nederlaag dat velen in beide partijen van mening kon zijn presidentschap hinken.",{
+            language:"dutch",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["president","obama","wakker","werd","maandag","geconfronteerd","congressional","nederlaag","velen","partijen","mening","presidentschap","hinken"]);
+    });
+
+    it("should return an array of 'keywords' for a Dutch string", function(){
+        var extraction_result = extractor.extract("President Obama wakker werd maandag geconfronteerd met een Congressional nederlaag dat velen in beide partijen van mening kon zijn presidentschap hinken.",{
+            language:"dutch",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["President","Obama","wakker","werd","maandag","geconfronteerd","Congressional","nederlaag","velen","partijen","mening","presidentschap","hinken"]);
+    });
+
+    it("should return an array of 'keywords' for a Russian string", function(){
+        var extraction_result = extractor.extract("Президент Обама проснулся понедельник перед Конгрессом поражение, что многие в обе стороны мнению, могли бы ковылять его президентства.",{
+            language:"russian",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["президент","обама", "проснулся", "понедельник", "конгрессом","поражение", "многие","обе", "стороны", "мнению", "могли","ковылять","президентства"]);
+    });
+
+    it("should return an array of 'keywords' for a Russian string", function(){
+        var extraction_result = extractor.extract("Президент Обама проснулся понедельник перед Конгрессом поражение, что многие в обе стороны мнению, могли бы ковылять его президентства.",{
+            language:"russian",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["Президент","Обама", "проснулся", "понедельник", "Конгрессом","поражение", "многие","обе", "стороны", "мнению", "могли","ковылять","президентства"]);
+    });
+
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
         var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
             language: "english",
@@ -72,8 +159,9 @@ describe("extractor", function(){
     });
 
     it("it should not include any numbers in the array of 'keywords'", function(){
-        var extraction_result = extractor.extract("The Black Sox scandal of 1919 saw the lifetime ban of 8 members of the Chicago White Sox.",{
+        var extraction_result = extractor.extract("The Black Sox scandal of 1920 saw the lifetime ban of 8 members of the Chicago White Sox.",{
             language: "english",
+            remove_digits: true,
             return_changed_case: true
         });
         extraction_result.should.not.be.empty;
