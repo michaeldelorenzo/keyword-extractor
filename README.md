@@ -67,7 +67,9 @@ The second argument of the _extract_ method is an Object of configuration/proces
 Parameter Name | Description | Permitted Values
 ---------------|-------------|-----------------
 language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _russian_
+remove_digits | Removes all digits from the results if set to true | _true_ or _false_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
+
 
 ## Credits
 
