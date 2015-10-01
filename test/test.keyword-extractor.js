@@ -139,6 +139,26 @@ describe("extractor", function(){
         extraction_result.should.not.be.empty;
         extraction_result.should.eql(["Президент","Обама", "проснулся", "понедельник", "Конгрессом","поражение", "многие","обе", "стороны", "мнению", "могли","ковылять","президентства"]);
     });
+  
+    it("should return an array of 'keywords' for a Portuguese string", function(){
+      var extraction_result = extractor.extract("Presidente Obama acordou na segunda-feira diante de uma derrota no Congresso que muitos acreditavam, em ambos os partidos, poderiam prejudicar sua presidência.",{
+        language:"portuguese",
+        return_changed_case:true
+      });
+
+      extraction_result.should.not.be.empty;
+      extraction_result.should.eql(["presidente", "obama", "acordou", "segunda-feira", "derrota", "congresso", "acreditavam", "ambos", "partidos", "poderiam", "prejudicar", "presidência"]);
+    });
+
+    it("should return an array of 'keywords' for a Portuguese string", function(){
+      var extraction_result = extractor.extract("Presidente Obama acordou na segunda-feira diante de uma derrota no Congresso que muitos acreditavam, em ambos os partidos, poderiam prejudicar sua presidência.",{
+        language:"portuguese",
+        return_changed_case:false
+      });
+
+      extraction_result.should.not.be.empty;
+      extraction_result.should.eql(["Presidente", "Obama", "acordou", "segunda-feira", "derrota", "Congresso", "acreditavam", "ambos", "partidos", "poderiam", "prejudicar", "presidência"]);
+    });
 
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
         var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
