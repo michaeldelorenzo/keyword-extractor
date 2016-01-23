@@ -11,8 +11,9 @@
     "contributors":   [
         "Marcos Sanz <marcossanzlatorre@gmail.com> (http://www.mistersanz.com)",
 	      "d-oliveros (https://github.com/d-oliveros)",
-	"Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
-	"janvde (https://github.com/janvde)"
+      	"Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
+      	"janvde (https://github.com/janvde)",
+        "Alex Gustafsson (https://github.com/AlexGustafsson)"
     ],
     "homepage":       "https://github.com/michaeldelorenzo/keyword-extractor",
     "repository": {

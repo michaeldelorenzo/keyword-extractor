@@ -160,6 +160,15 @@ describe("extractor", function(){
       extraction_result.should.eql(["Presidente", "Obama", "acordou", "segunda-feira", "derrota", "Congresso", "acreditavam", "ambos", "partidos", "poderiam", "prejudicar", "presidência"]);
     });
 
+    it("should return an array of 'keywords' for a Swedish string", function(){
+        var extraction_result = extractor.extract("President Obama vaknade upp under måndagen inför ett nederlag i kongressen som många i båda partier trodde kunde stappla hans ordförandeskap.",{
+            language:"swedish",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["President", "Obama", "vaknade", "måndagen", "nederlag", "kongressen", "partier", "trodde", "stappla", "ordförandeskap"]);
+    });
+
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
         var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
             language: "english",
