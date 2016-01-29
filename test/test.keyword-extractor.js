@@ -42,7 +42,8 @@ describe("extractor", function(){
           'Presidente Obama',
           'despertó',
           'lunes enfrentado',
-          'derrota del Congreso',
+          'derrota',
+          'Congreso',
           'ambas partes creyeron',
           'podría entorpecer',
           'presidencia'
