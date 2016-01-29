@@ -71,6 +71,7 @@ Parameter Name | Description | Permitted Values
 language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _russian_,_portuguese_,_swedish_,
 remove_digits | Removes all digits from the results if set to true | _true_ or _false_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
+return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
 remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults to _false_ )
 
 
