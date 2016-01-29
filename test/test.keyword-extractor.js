@@ -32,6 +32,23 @@ describe("extractor", function(){
         extraction_result.should.eql(["President","Obama","woke","Monday","facing","Congressional","defeat","parties","believed","hobble","presidency"]);
     });
 
+    it("should return an array of consecutive 'keywords' for a Spanish string", function() {
+      var extraction_result = extractor.extract("Presidente Obama se despertó el lunes enfrentado a una derrota del Congreso que muchos en ambas partes creyeron que podría entorpecer su presidencia.", {
+          language:"spanish",
+          return_chained_words:true
+      });
+      extraction_result.should.not.be.empty;
+      extraction_result.should.eql([
+          'Presidente Obama',
+          'despertó',
+          'lunes enfrentado',
+          'derrota del Congreso',
+          'ambas partes creyeron',
+          'podría entorpecer',
+          'presidencia'
+      ]);
+    });
+
     it("should return an array of 'keywords' for a Spanish string", function(){
         var extraction_result = extractor.extract("Presidente Obama despertó Lunes enfrenta a una derrota del Congreso que muchos en ambas partes creyeron podrían entorpecer su presidencia.",{
             language:"spanish",
