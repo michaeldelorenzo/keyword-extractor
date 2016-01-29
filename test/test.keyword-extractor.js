@@ -38,7 +38,7 @@ describe("extractor", function(){
             return_changed_case:true
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","a","derrota","del","congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","del","congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a Spanish string", function(){
@@ -47,7 +47,7 @@ describe("extractor", function(){
             return_changed_case:false
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","a","derrota","del","Congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","del","Congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a German string", function(){
@@ -139,7 +139,7 @@ describe("extractor", function(){
         extraction_result.should.not.be.empty;
         extraction_result.should.eql(["Президент","Обама", "проснулся", "понедельник", "Конгрессом","поражение", "многие","обе", "стороны", "мнению", "могли","ковылять","президентства"]);
     });
-  
+
     it("should return an array of 'keywords' for a Portuguese string", function(){
       var extraction_result = extractor.extract("Presidente Obama acordou na segunda-feira diante de uma derrota no Congresso que muitos acreditavam, em ambos os partidos, poderiam prejudicar sua presidência.",{
         language:"portuguese",
