@@ -32,13 +32,30 @@ describe("extractor", function(){
         extraction_result.should.eql(["President","Obama","woke","Monday","facing","Congressional","defeat","parties","believed","hobble","presidency"]);
     });
 
+    it("should return an array of consecutive 'keywords' for a Spanish string", function() {
+      var extraction_result = extractor.extract("Presidente Obama se despertó el lunes enfrentado a una derrota del Congreso que muchos en ambas partes creyeron que podría entorpecer su presidencia.", {
+          language:"spanish",
+          return_chained_words:true
+      });
+      extraction_result.should.not.be.empty;
+      extraction_result.should.eql([
+          'Presidente Obama',
+          'despertó',
+          'lunes enfrentado',
+          'derrota del Congreso',
+          'ambas partes creyeron',
+          'podría entorpecer',
+          'presidencia'
+      ]);
+    });
+
     it("should return an array of 'keywords' for a Spanish string", function(){
         var extraction_result = extractor.extract("Presidente Obama despertó Lunes enfrenta a una derrota del Congreso que muchos en ambas partes creyeron podrían entorpecer su presidencia.",{
             language:"spanish",
             return_changed_case:true
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","a","derrota","del","congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","del","congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a Spanish string", function(){
@@ -47,7 +64,7 @@ describe("extractor", function(){
             return_changed_case:false
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","a","derrota","del","Congreso","que","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","del","Congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a German string", function(){
@@ -139,7 +156,7 @@ describe("extractor", function(){
         extraction_result.should.not.be.empty;
         extraction_result.should.eql(["Президент","Обама", "проснулся", "понедельник", "Конгрессом","поражение", "многие","обе", "стороны", "мнению", "могли","ковылять","президентства"]);
     });
-  
+
     it("should return an array of 'keywords' for a Portuguese string", function(){
       var extraction_result = extractor.extract("Presidente Obama acordou na segunda-feira diante de uma derrota no Congresso que muitos acreditavam, em ambos os partidos, poderiam prejudicar sua presidência.",{
         language:"portuguese",
