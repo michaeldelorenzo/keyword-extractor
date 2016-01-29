@@ -38,7 +38,7 @@ describe("extractor", function(){
             return_changed_case:true
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","del","congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a Spanish string", function(){
@@ -47,7 +47,7 @@ describe("extractor", function(){
             return_changed_case:false
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","del","Congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","Congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a German string", function(){
