@@ -187,6 +187,15 @@ describe("extractor", function(){
         extraction_result.should.eql(["President", "Obama", "vaknade", "måndagen", "nederlag", "kongressen", "partier", "trodde", "stappla", "ordförandeskap"]);
     });
 
+	it("should return an array of 'keywords' for a Danish string", function(){
+		var extraction_result = extractor.extract("Præsident Obama vågnede op om mandagen over for et kongres nederlag, som mange i begge partier mente kunne halte hans præsidentperiode.",{
+			language:"danish",
+			return_changed_case:false
+		});
+		extraction_result.should.not.be.empty;
+		extraction_result.should.eql(["Præsident", "Obama", "vågnede", "mandagen", "kongres", "nederlag", "partier", "mente", "halte", "præsidentperiode"]);
+	});
+
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
         var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
             language: "english",
