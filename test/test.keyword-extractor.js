@@ -49,6 +49,23 @@ describe("extractor", function(){
           'presidencia'
       ]);
     });
+    
+    it("should return an array of chained 'keywords' with maximum length of 2 for a Spanish string", function() {
+      var extraction_result = extractor.extract("Presidente Obama se despertó el lunes enfrentado a una derrota del Congreso que muchos en ambas partes creyeron que podría entorpecer su presidencia.", {
+          language:"spanish",
+          return_max_ngrams: 2
+      });
+      extraction_result.should.not.be.empty;
+      extraction_result.should.eql([
+          'Presidente Obama',
+          'despertó',
+          'lunes enfrentado',
+          'derrota',
+          'Congreso',
+          'podría entorpecer',
+          'presidencia'
+      ]);
+    });
 
     it("should return an array of 'keywords' for a Spanish string", function(){
         var extraction_result = extractor.extract("Presidente Obama despertó Lunes enfrenta a una derrota del Congreso que muchos en ambas partes creyeron podrían entorpecer su presidencia.",{
