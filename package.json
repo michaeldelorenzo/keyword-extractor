@@ -33,6 +33,6 @@
         "underscore.string":       "2.3.3"
     },
     "engines": {
-        "node":       "node >= 0.10.0"
+        "node":       ">= 0.10.0"
     }
 }
