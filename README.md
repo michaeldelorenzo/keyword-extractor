@@ -1,4 +1,4 @@
-#Keyword Extractor
+# Keyword Extractor
 
 A simple [NPM package](https://npmjs.org/package/keyword-extractor) for extracting _keywords_ from a string by
 removing stopwords.
@@ -24,7 +24,7 @@ To execute the package's tests, run:
 $ make test
 ```
 
-##Usage of the Module
+## Usage of the Module
 
 ```javascript
 //  include the Keyword Extractor
@@ -62,7 +62,7 @@ var extraction_result = keyword_extractor.extract(sentence,{
 */
 ```
 
-###Options Parameters
+### Options Parameters
 
 The second argument of the _extract_ method is an Object of configuration/processing settings for the extraction.
 
