@@ -10,7 +10,7 @@ $ npm install keyword-extractor
 ```
 ### Install browserify, required for demo (modify sample.js file and browserify after that)
 ```sh
-$ npm install 
+$ npm install browserify
 $ cd keyword-extractor/demo
 $ browserify sample.js -o bundle.js
 ```
