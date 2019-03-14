@@ -45,11 +45,11 @@ describe("extractor", function(){
           'derrota',
           'Congreso',
           'ambas partes creyeron',
-          'podría entorpecer',
+          'entorpecer',
           'presidencia'
       ]);
     });
-    
+
     it("should return an array of chained 'keywords' with maximum length of 2 for a Spanish string", function() {
       var extraction_result = extractor.extract("Presidente Obama se despertó el lunes enfrentado a una derrota del Congreso que muchos en ambas partes creyeron que podría entorpecer su presidencia.", {
           language:"spanish",
@@ -62,7 +62,9 @@ describe("extractor", function(){
           'lunes enfrentado',
           'derrota',
           'Congreso',
-          'podría entorpecer',
+          'ambas partes',
+          'creyeron',
+          'entorpecer',
           'presidencia'
       ]);
     });
@@ -73,7 +75,7 @@ describe("extractor", function(){
             return_changed_case:true
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["presidente","obama","despertó","lunes","enfrenta","derrota","congreso","ambas","partes","creyeron","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a Spanish string", function(){
@@ -82,7 +84,7 @@ describe("extractor", function(){
             return_changed_case:false
         });
         extraction_result.should.not.be.empty;
-        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","Congreso","ambas","partes","creyeron","podrían","entorpecer","presidencia"]);
+        extraction_result.should.eql(["Presidente","Obama","despertó","Lunes","enfrenta","derrota","Congreso","ambas","partes","creyeron","entorpecer","presidencia"]);
     });
 
     it("should return an array of 'keywords' for a German string", function(){
