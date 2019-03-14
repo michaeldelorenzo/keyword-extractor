@@ -157,6 +157,24 @@ describe("extractor", function(){
         extraction_result.should.eql(["President","Obama","wakker","werd","maandag","geconfronteerd","Congressional","nederlaag","velen","partijen","mening","presidentschap","hinken"]);
     });
 
+    it("should return an array of 'keywords' for a Romanian string string", function(){
+        var extraction_result = extractor.extract("Google LLC este o corporație americană multinațională care administrează motorul de căutare pe Internet cu același nume.",{
+            language:"romanian",
+            return_changed_case:true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["google", "llc", "corporație", "americană", "multinațională", "administrează", "motorul", "căutare", "internet", "același", "nume"]);
+    });
+
+    it("should return an array of 'keywords' for a Romanian string string", function(){
+        var extraction_result = extractor.extract("Google LLC este o corporație americană multinațională care administrează motorul de căutare pe Internet cu același nume.",{
+            language:"romanian",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["Google", "LLC", "corporație", "americană", "multinațională", "administrează", "motorul", "căutare", "Internet", "același", "nume"]);
+    });
+
     it("should return an array of 'keywords' for a Russian string", function(){
         var extraction_result = extractor.extract("Президент Обама проснулся понедельник перед Конгрессом поражение, что многие в обе стороны мнению, могли бы ковылять его президентства.",{
             language:"russian",
