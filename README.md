@@ -8,6 +8,13 @@ removing stopwords.
 ```sh
 $ npm install keyword-extractor
 ```
+### Install browserify, required for demo (modify sample.js file and browserify after that)
+```sh
+$ npm install browserify
+$ cd keyword-extractor/demo
+$ browserify sample.js -o bundle.js
+```
+> [use online documentation for detalied usage usage](http://browserify.org/)
 
 ## Running tests
 
@@ -68,7 +75,7 @@ The second argument of the _extract_ method is an Object of configuration/proces
 
 Parameter Name | Description | Permitted Values
 ---------------|-------------|-----------------
-language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _russian_,_portuguese_,_swedish_,
+language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _romanian_, _russian_, _portuguese_, _swedish_,
 remove_digits | Removes all digits from the results if set to true | _true_ or _false_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
 return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
