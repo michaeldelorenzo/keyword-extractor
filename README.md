@@ -8,6 +8,13 @@ removing stopwords.
 ```sh
 $ npm install keyword-extractor
 ```
+### Install browserify, required for demo (modify sample.js file and browserify after that)
+```sh
+$ npm install 
+$ cd keyword-extractor/demo
+$ browserify sample.js -o bundle.js
+```
+> [use online documentation for detalied usage usage](http://browserify.org/)
 
 ## Running tests
 
