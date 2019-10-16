@@ -14,7 +14,7 @@ $ npm install browserify
 $ cd keyword-extractor/demo
 $ browserify sample.js -o bundle.js
 ```
-> [use online documentation for detalied usage usage](http://browserify.org/)
+> [use online documentation for detalied usage](http://browserify.org/)
 
 ## Running tests
 
