@@ -2,6 +2,7 @@
     "author": "Michael De Lorenzo <michael@delorenzodesign.com> (http://mikedelorenzo.com)",
     "name": "keyword-extractor",
     "description": "Module for creating a keyword array from a string and excluding stop words.",
+    "types": "types/index.d.ts",
     "keywords": [
         "text",
         "keyword",
