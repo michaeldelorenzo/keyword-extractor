@@ -20,7 +20,8 @@
         "d-oliveros (https://github.com/d-oliveros)",
         "Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
         "janvde (https://github.com/janvde)",
-        "Alex Gustafsson (https://github.com/AlexGustafsson)"
+        "Alex Gustafsson (https://github.com/AlexGustafsson)",
+        "CircleHD Devs (https://github.com/circlehddev)" 
     ],
     "homepage": "https://github.com/michaeldelorenzo/keyword-extractor",
     "repository": {
@@ -31,18 +32,17 @@
         "url": "https://github.com/michaeldelorenzo/keyword-extractor/issues"
     },
     "main": "./index",
+    "scripts": {
+        "start": "browserify index.js --o bundle.js",
+        "test": "mocha -r esm"
+    },
     "devDependencies": {
-        "mocha": "^7.1.2",
-        "should": "*"
+        "browserify": "^17.0.0",
+        "esm": "^3.2.25",
+        "mocha": "^8.2.0",
+        "should": "^13.2.3"
     },
-    "dependencies": {
-        "js-yaml": ">=3.13.1",
-        "kind-of": ">=6.0.3",
-        "minimist": ">=0.2.1",
-        "set-value": ">=2.0.1",
-        "underscore": "1.10.2",
-        "underscore.string": "3.3.5"
-    },
+    "dependencies": {},
     "engines": {
         "node": ">= 0.10.0"
     }
