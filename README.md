@@ -35,7 +35,7 @@ $ make test
 
 ```javascript
 //  include the Keyword Extractor
-var keyword_extractor = require("keyword-extractor");
+const keyword_extractor = require("keyword-extractor");
 
 //  Opening sentence to NY Times Article at
 /*
