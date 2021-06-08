@@ -6,4 +6,8 @@ test:
 	--reporter $(REPORTER) \
 	$(MOCHA_OPTS)
 
+test.ci:
+	@npm install
+	@./node_modules/.bin/mocha --reporter $(REPORTER) $(MOCHA_OPTS)
+
 .PHONY: test
