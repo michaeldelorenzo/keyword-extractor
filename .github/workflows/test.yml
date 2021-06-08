@@ -1,0 +1,21 @@
+# This workflow will do a clean install of dependencies, build the source code, run tests and lint
+
+name: test
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Run Tests
+        run: make test.ci

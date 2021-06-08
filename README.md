@@ -1,5 +1,7 @@
 # Keyword Extractor
 
+[![Tests Status](https://github.com/michaeldelorenzo/keyword-extractor/workflows/test/badge.svg)](https://github.com/michaeldelorenzo/keyword-extractor/actions)
+
 A simple [NPM package](https://npmjs.org/package/keyword-extractor) for extracting _keywords_ from a string by
 removing stopwords.
 
