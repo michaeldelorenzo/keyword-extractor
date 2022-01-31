@@ -9,7 +9,7 @@
         "search",
         "extract"
     ],
-    "version": "0.0.20",
+    "version": "0.0.21",
     "licenses": [
         {
             "type": "MIT",
@@ -40,7 +40,7 @@
     "devDependencies": {
         "browserify": "^17.0.0",
         "esm": "^3.2.25",
-        "mocha": "^8.2.0",
+        "mocha": "^9.2.0",
         "should": "^13.2.3"
     },
     "dependencies": {},
