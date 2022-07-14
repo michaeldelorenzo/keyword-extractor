@@ -87,5 +87,5 @@ return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_ | _in
 
 The initial stopwords lists are taken from the following sources:
 
-- English [http://jmlr.org/papers/volume5/lewis04a/a11-smart-stop-list/english.stop]
+- English [http://www.ai.mit.edu/projects/jmlr/papers/volume5/lewis04a/a11-smart-stop-list/english.stop]
 - Spanish [https://stop-words.googlecode.com/svn/trunk/stop-words/stop-words/stop-words-spanish.txt]
