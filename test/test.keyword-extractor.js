@@ -277,4 +277,84 @@ describe("extractor", function(){
         extractor.getStopwords().should.not.be.empty;
         extractor.getStopwords({language:"english"}).should.not.be.empty;
     });
+
+    it("should return an array of 'keywords' for a Turkish string", function(){
+        var extraction_result = extractor.extract("Türk Dil dilli dil dilin dillerin Kurumunun kurumunun 1945’ten beri yayımlanan Türkçe Sözlük’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.",{
+            language:"turkish",
+            return_changed_case:true
+        });
+
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql([
+            'türk',              'dil',
+            'dilli',             'dil',
+            'dilin',             'dillerin',
+            'kurumunun',         'kurumunun',
+            '1945ten',           'yayımlanan',
+            'türkçe',            'sözlükünün',
+            '2011',              'yılında',
+            '11',                'baskısının',
+            'gözden',            'geçirilip',
+            'güncellenmiş',      'genel',
+            'ağdan',             'sunulan',
+            'sürümüdür',         'türkçe',
+            'sözlük',            'dilimizde',
+            'yaşanan',           'gelişmelere',
+            'bağlı',             'sürekli',
+            'güncellenmektedir'
+        ]);
+    });
+
+    it("should return an array of 'keywords' for a Turkish string without changing the case of the words", function(){
+        var extraction_result = extractor.extract("Türk Dil dilli dil dilin dillerin Kurumunun kurumunun 1945’ten beri yayımlanan Türkçe Sözlük’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.",{
+            language:"turkish",
+            return_changed_case:false,
+        });
+
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql([
+            'Türk',              'Dil',
+            'dilli',             'dil',
+            'dilin',             'dillerin',
+            'Kurumunun',         'kurumunun',
+            '1945ten',           'yayımlanan',
+            'Türkçe',            'Sözlükünün',
+            '2011',              'yılında',
+            '11',                'baskısının',
+            'gözden',            'geçirilip',
+            'güncellenmiş',      'genel',
+            'ağdan',             'sunulan',
+            'sürümüdür',         'Türkçe',
+            'Sözlük',            'dilimizde',
+            'yaşanan',           'gelişmelere',
+            'bağlı',             'sürekli',
+            'güncellenmektedir'
+        ]);
+    });
+
+    it("should return an array of 'keywords' for a Turkish string with remove duplicates changing the case of the words", function(){
+        var extraction_result = extractor.extract("Türk Dil dilli dil dilin dillerin Kurumunun kurumunun 1945’ten beri yayımlanan Türkçe Sözlük’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.",{
+            language:"turkish",
+            return_changed_case:true,
+            remove_duplicates: true,
+        });
+
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql([
+            'türk',         'dil',
+            'dilli',        'dilin',
+            'dillerin',     'kurumunun',
+            '1945ten',      'yayımlanan',
+            'türkçe',       'sözlükünün',
+            '2011',         'yılında',
+            '11',           'baskısının',
+            'gözden',       'geçirilip',
+            'güncellenmiş', 'genel',
+            'ağdan',        'sunulan',
+            'sürümüdür',    'sözlük',
+            'dilimizde',    'yaşanan',
+            'gelişmelere',  'bağlı',
+            'sürekli',      'güncellenmektedir'
+        ]);
+    });
 });
