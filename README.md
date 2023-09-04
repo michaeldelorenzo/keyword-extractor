@@ -26,8 +26,15 @@ To execute the package's tests, run:
 $ make test
 ```
 
+To run the example run:
+
+``` sh
+$ node examples/example.js
+```
+
 ## Usage of the Module
 
+### Single language
 ```javascript
 //  include the Keyword Extractor
 const keyword_extractor = require("keyword-extractor");
@@ -69,6 +76,31 @@ keyword_extractor.extract(sentence,{
 */
 ```
 
+### Multi languages
+```javascript
+//  include the Keyword Extractor
+const keyword_extractor = require("keyword-extractor");
+
+const sentence = "ذهب إلى المدرسة مع صديقي Ahmed"
+
+//  Extract the keywords
+const extraction_result =
+keyword_extractor.extract_multi_language(sentence,{
+    languages:["english","arabic"],
+    return_common: true,
+    remove_digits: true,
+    return_changed_case:true,
+    remove_duplicates: false
+});
+
+/*
+  extraction result is:
+  [ 'المدرسة'
+  , 'صديقي', 
+  'ahmed' ]
+*/
+```
+
 ### Options Parameters
 
 The second argument of the _extract_ method is an Object of configuration/processing settings for the extraction.
@@ -81,7 +113,7 @@ return_changed_case | The case of the extracted keywords. Setting the value to _
 return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
 remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults to _false_ )
 return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_ | _integer_ , _false_ (defaults to _false_ )
-
+return_common | Used only with extract multi languages, If true it returns only common between the results of all languages | _true_ , _false_ (defaults to _true_ )
 
 ## Credits
 
