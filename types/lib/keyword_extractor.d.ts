@@ -1,5 +1,5 @@
 
-type LanguageName = "danish"|"dutch"|"english"|"french"|"galician"|"german"|"italian"|"polish"|"portuguese"|"romanian"|"russian"|"spanish"|"swedish";
+type LanguageName = "danish"|"dutch"|"english"|"french"|"galician"|"german"|"italian"|"polish"|"portuguese"|"romanian"|"russian"|"spanish"|"swedish"|"ar"|"cs"|"da"|"de"|"en"|"es"|"fa"|"fr"|"gl"|"it"|"ko"|"nl"|"pl"|"pt"|"ro"|"ru"|"sv"|"tr"|"vi";
 type GetStopwordsOptions = {language?: LanguageName};
 type ExtractionOptions = {
   remove_digits?: boolean;
@@ -23,3 +23,6 @@ export declare function _extract(str: string, options?: ExtractionOptions): stri
  * @param {GetStopwordsOptions | undefined} options
  */
 export declare function _getStopwords(options?: GetStopwordsOptions): string[];
+
+/** Provides the list of supported ISO 639-1 language codes */
+export declare const supported_language_codes: string[];
