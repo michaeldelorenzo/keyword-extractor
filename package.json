@@ -9,7 +9,7 @@
         "search",
         "extract"
     ],
-    "version": "0.0.25",
+    "version": "0.0.26",
     "licenses": [
         {
             "type": "MIT",
@@ -22,7 +22,8 @@
         "Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
         "janvde (https://github.com/janvde)",
         "Alex Gustafsson (https://github.com/AlexGustafsson)",
-        "CircleHD Devs (https://github.com/circlehddev)"
+        "CircleHD Devs (https://github.com/circlehddev)",
+	"Oliver Tacke (https://github.com/otacke)"
     ],
     "homepage": "https://github.com/michaeldelorenzo/keyword-extractor",
     "repository": {
