@@ -75,7 +75,7 @@ The second argument of the _extract_ method is an Object of configuration/proces
 
 Parameter Name | Description | Permitted Values
 ---------------|-------------|-----------------
-language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _romanian_, _russian_, _portuguese_, _swedish_, _arabic_, _persian_, _turkish_
+language       | The stopwords list to use. ISO 639-1 codes and verbose names | _ar_, _cs_, _da_, _de_, _en_, _es_, _fa_, _fr_, _gl_, _it_, _ko_, _nl_, _pl_, _pt_, _ro_, _ru_, _sv_, _tr_, _vi_, _arabic_, _czech_, _danish_, _dutch_, _english_, _french_, _galician_,_german_, _italian_, _korean_, _persian_, _polish_, _portuguese_, _romanian_, _russian_,_spanish_, _swedish_, _turkish_, _vietnam_
 remove_digits | Removes all digits from the results if set to true (can handle Arabic and Perisan digits too) | _true_ or _false_
 return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
 return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
