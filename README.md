@@ -100,9 +100,9 @@ Common types and the version bump they trigger:
 
 Type       | Description                                | Release
 -----------|---------------------------------------------|--------
-`fix`      | A bug fix                                    | Patch
+`fix`, `perf`, `revert` | A bug fix, performance fix, or revert of a previous commit | Patch
 `feat`     | A new feature                                | Minor
-`perf`, `refactor`, `docs`, `style`, `test`, `build`, `ci`, `chore` | No user-facing change | None
+`refactor`, `docs`, `style`, `test`, `build`, `ci`, `chore` | No user-facing change | None
 Any type with a `BREAKING CHANGE:` footer or a `!` after the type/scope (e.g. `feat!:`) | Breaking API change | Major
 
 ## Credits
