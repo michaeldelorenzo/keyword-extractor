@@ -252,6 +252,15 @@ describe("extractor", function(){
             extraction_result.should.eql(["rt","@joelgascoigne","effective","leaders","brands","repeat","point","barely","stand","hear","mor"]);
         });
 
+        it("should not include lone bullet symbols or hyphens as 'keywords'", function(){
+            var extraction_result = extractor.extract("· Improve documentation - Fix packaging bug",{
+                language: "en",
+                return_changed_case: true
+            });
+            extraction_result.should.not.be.empty;
+            extraction_result.should.eql(["improve","documentation","fix","packaging","bug"]);
+        });
+
         it("it should not include any numbers in the array of 'keywords'", function(){
             var extraction_result = extractor.extract("The Black Sox scandal of 1920 saw the lifetime ban of 8 members of the Chicago White Sox.",{
                 language: "en",
