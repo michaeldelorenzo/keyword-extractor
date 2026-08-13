@@ -10,6 +10,10 @@ describe("extractor", function(){
         extractor.extract("   ").should.be.empty;
     });
 
+    it("should return an empty array for an empty string even when options is explicitly null (does not reach stopwords_regex validation)", function(){
+        extractor.extract("", null).should.be.empty;
+    });
+
     describe("ISO 639-1 language code format", function(){
         it("should return an emtpy array for a string that only contains stopwords", function(){
             extractor.extract("an associated behind",{language:"en"}).should.be.empty;
@@ -444,6 +448,15 @@ describe("extractor", function(){
             it("should throw the same error for a non-RegExp entry even when the input trims to empty text", function(){
                 (function(){
                     extractor.extract("   ", {
+                        language: "en",
+                        stopwords_regex: ["not-a-regex"]
+                    });
+                }).should.throw("stopwords_regex must be an array of RegExp objects");
+            });
+
+            it("should throw the same error for a non-RegExp entry even when str is empty", function(){
+                (function(){
+                    extractor.extract("", {
                         language: "en",
                         stopwords_regex: ["not-a-regex"]
                     });
