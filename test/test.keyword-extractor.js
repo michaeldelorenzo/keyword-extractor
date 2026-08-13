@@ -15,6 +15,31 @@ describe("extractor", function(){
             extractor.extract("an associated behind",{language:"en"}).should.be.empty;
         });
 
+        it("should not chain 'keywords' separated by digits that get removed (regression #43)", function() {
+          var extraction_result = extractor.extract("Linux 123 Foundation", {
+              language:"en",
+              remove_digits:true,
+              return_chained_words:true
+          });
+          extraction_result.should.eql(["Linux","Foundation"]);
+        });
+
+        it("should not chain 'keywords' separated by a stray symbol that gets removed (regression #43)", function() {
+          var extraction_result = extractor.extract("Linux & Foundation", {
+              language:"en",
+              return_chained_words:true
+          });
+          extraction_result.should.eql(["Linux","Foundation"]);
+        });
+
+        it("should still chain 'keywords' that are truly adjacent in the original text", function() {
+          var extraction_result = extractor.extract("Linux Foundation", {
+              language:"en",
+              return_chained_words:true
+          });
+          extraction_result.should.eql(["Linux Foundation"]);
+        });
+
         it("should return an array of 'keywords' for an English string", function(){
             var extraction_result = extractor.extract("President Obama woke up Monday facing a Congressional defeat that many in both parties believed could hobble his presidency.",{
                 language:"en",
