@@ -321,6 +321,78 @@ describe("extractor", function(){
             extractor.getStopwords({language:"english"}).should.not.be.empty;
         });
 
+        describe("stopwords_regex option (#69)", function(){
+            it("should remove words matching a unit-suffixed number pattern (e.g. '10lbs', '10Kg', '6pm')", function(){
+                var extraction_result = extractor.extract("He weighed 10lbs at birth and grew to 10Kg, waking at 6pm daily.", {
+                    language: "en",
+                    remove_digits: false,
+                    stopwords_regex: [/^\d+[a-z]+$/i]
+                });
+                extraction_result.should.eql(["weighed","birth","grew","waking","daily"]);
+            });
+
+            it("should remove words matching a numeric-range pattern (e.g. '1-100')", function(){
+                var extraction_result = extractor.extract("Choose a number between 1-100 to win.", {
+                    language: "en",
+                    return_changed_case: true,
+                    stopwords_regex: [/^\d+-\d+$/]
+                });
+                extraction_result.should.eql(["choose","number","win"]);
+            });
+
+            it("should support multiple regexes at once", function(){
+                var extraction_result = extractor.extract("He weighed 10lbs and picked a number between 1-100.", {
+                    language: "en",
+                    return_changed_case: true,
+                    stopwords_regex: [/^\d+[a-z]+$/i, /^\d+-\d+$/]
+                });
+                extraction_result.should.eql(["weighed","picked","number"]);
+            });
+
+            it("should not remove anything when stopwords_regex is omitted (no regression)", function(){
+                var extraction_result = extractor.extract("He weighed 10lbs at birth.", {
+                    language: "en",
+                    remove_digits: false
+                });
+                extraction_result.should.eql(["weighed","10lbs","birth"]);
+            });
+
+            it("should not remove anything when stopwords_regex matches nothing", function(){
+                var extraction_result = extractor.extract("President Obama woke up Monday.", {
+                    language: "en",
+                    return_changed_case: true,
+                    stopwords_regex: [/^\d+[a-z]+$/i]
+                });
+                extraction_result.should.eql(["president","obama","woke","monday"]);
+            });
+
+            it("should still chain adjacent 'keywords' separated by a regex-removed word (regression #43 style)", function(){
+                var extraction_result = extractor.extract("Linux 10lbs Foundation", {
+                    language: "en",
+                    return_chained_words: true,
+                    stopwords_regex: [/^\d+[a-z]+$/i]
+                });
+                extraction_result.should.eql(["Linux","Foundation"]);
+            });
+
+            it("should compose correctly with remove_duplicates", function(){
+                var extraction_result = extractor.extract("10lbs 10lbs weighed weighed", {
+                    language: "en",
+                    stopwords_regex: [/^\d+[a-z]+$/i],
+                    remove_duplicates: true
+                });
+                extraction_result.should.eql(["weighed"]);
+            });
+
+            it("should not carry lastIndex state between words for a global regex (stateful regex safety)", function(){
+                var extraction_result = extractor.extract("10lbs 10kg weighed", {
+                    language: "en",
+                    stopwords_regex: [/^\d+[a-z]+$/gi]
+                });
+                extraction_result.should.eql(["weighed"]);
+            });
+        });
+
         it("should return an array of 'keywords' for a Turkish string", function(){
             var extraction_result = extractor.extract("Türk Dil dilli dil dilin dillerin Kurumunun kurumunun 1945’ten beri yayımlanan Türkçe Sözlük’ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.",{
                 language:"tr",
