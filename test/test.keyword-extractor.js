@@ -445,6 +445,25 @@ describe("extractor", function(){
                 }).should.throw("stopwords_regex must be an array of RegExp objects");
             });
 
+            it("should throw a clear error when stopwords_regex is a single RegExp instead of an array", function(){
+                (function(){
+                    extractor.extract("10lbs weighed", {
+                        language: "en",
+                        stopwords_regex: /^\d+[a-z]+$/i
+                    });
+                }).should.throw("stopwords_regex must be an array of RegExp objects");
+            });
+
+            it("should treat any falsy stopwords_regex value the same as omitting it", function(){
+                [null, false, 0, ""].forEach(function(falsy_value){
+                    var extraction_result = extractor.extract("10lbs weighed", {
+                        language: "en",
+                        stopwords_regex: falsy_value
+                    });
+                    extraction_result.should.eql(["10lbs","weighed"]);
+                });
+            });
+
             it("should throw the same error for a non-RegExp entry even when the input trims to empty text", function(){
                 (function(){
                     extractor.extract("   ", {
