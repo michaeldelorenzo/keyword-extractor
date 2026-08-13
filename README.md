@@ -105,6 +105,9 @@ Type       | Description                                | Release
 `refactor`, `docs`, `style`, `test`, `build`, `ci`, `chore` | No user-facing change | None
 Any type with a `BREAKING CHANGE:` footer or a `!` after the type/scope (e.g. `feat!:`) | Breaking API change | Major
 
+Release notes for each version are published on the [GitHub Releases page](https://github.com/michaeldelorenzo/keyword-extractor/releases) —
+there's no `CHANGELOG.md` committed to the repo, since `main` is a protected branch and the release automation can't push commits to it.
+
 ## Credits
 
 The initial stopwords lists are taken from the following sources:
