@@ -392,13 +392,34 @@ describe("extractor", function(){
                 extraction_result.should.eql(["weighed"]);
             });
 
-            it("should not mutate a caller-supplied global/sticky regex's lastIndex", function(){
+            it("should not mutate a caller-supplied global regex's lastIndex", function(){
                 var shared_regex = /^\d+[a-z]+$/gi;
+                shared_regex.lastIndex = 3;
                 extractor.extract("10lbs 10kg weighed", {
                     language: "en",
                     stopwords_regex: [shared_regex]
                 });
-                shared_regex.lastIndex.should.eql(0);
+                shared_regex.lastIndex.should.eql(3);
+            });
+
+            it("should not mutate a caller-supplied sticky regex's lastIndex", function(){
+                var shared_regex = /^\d+[a-z]+$/y;
+                shared_regex.lastIndex = 3;
+                extractor.extract("10lbs 10kg weighed", {
+                    language: "en",
+                    stopwords_regex: [shared_regex]
+                });
+                shared_regex.lastIndex.should.eql(3);
+            });
+
+            it("should preserve sticky-flag anchoring instead of turning it into an unanchored search", function(){
+                var extraction_result = extractor.extract("foobar bar", {
+                    language: "en",
+                    stopwords_regex: [/bar/y]
+                });
+                //  sticky /bar/y only matches when "bar" starts at position 0,
+                //  so "foobar" must be kept while the standalone "bar" is removed
+                extraction_result.should.eql(["foobar"]);
             });
 
             it("should match a case-sensitive pattern against the original-case word, not just the lowercased form", function(){
@@ -409,6 +430,24 @@ describe("extractor", function(){
                 //  "ABC123" is removed (matches the original-case pattern), "xyz456" is kept
                 //  ("the"/"but" are removed as ordinary English stopwords, unrelated to the regex)
                 extraction_result.should.eql(["unit","failed","xyz456","passed"]);
+            });
+
+            it("should throw a clear error when stopwords_regex contains a non-RegExp entry", function(){
+                (function(){
+                    extractor.extract("10lbs weighed", {
+                        language: "en",
+                        stopwords_regex: ["not-a-regex"]
+                    });
+                }).should.throw("stopwords_regex must be an array of RegExp objects");
+            });
+
+            it("should throw the same error for a non-RegExp entry even when the input trims to empty text", function(){
+                (function(){
+                    extractor.extract("   ", {
+                        language: "en",
+                        stopwords_regex: ["not-a-regex"]
+                    });
+                }).should.throw("stopwords_regex must be an array of RegExp objects");
             });
         });
 
