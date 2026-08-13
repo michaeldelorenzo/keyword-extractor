@@ -77,6 +77,8 @@ This package ships its own type declarations, so no `@types` package is needed. 
 ```typescript
 import keyword_extractor from "keyword-extractor";
 
+const sentence = "President Obama woke up Monday facing a Congressional defeat.";
+
 const extraction_result: string[] = keyword_extractor.extract(sentence, {
     language: "english",
     remove_digits: true,
