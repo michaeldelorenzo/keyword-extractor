@@ -69,6 +69,21 @@ keyword_extractor.extract(sentence,{
 */
 ```
 
+The module can also be imported with ES module syntax, e.g. in Next.js apps or other ESM-based projects:
+
+```javascript
+import keyword_extractor from "keyword-extractor";
+// or, using named imports:
+// import { extract, getStopwords, supported_language_codes } from "keyword-extractor";
+
+const extraction_result = keyword_extractor.extract(sentence, {
+    language: "english",
+    remove_digits: true,
+    return_changed_case: true,
+    remove_duplicates: false
+});
+```
+
 ### Options Parameters
 
 The second argument of the _extract_ method is an Object of configuration/processing settings for the extraction.
