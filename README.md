@@ -116,6 +116,9 @@ remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults 
 return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_ | _integer_ , _false_ (defaults to _false_ )
 stopwords_regex | Removes any word matching one of the given regular expressions, in addition to the language's stopwords list. Useful for filtering out patterns that aren't in a fixed word list, such as units (`10lbs`, `10Kg`), times (`6pm`), or ranges (`1-100`) | Array of `RegExp` (defaults to _[]_ )
 
+Each pattern is tested against both the lowercased and original-case forms of a word, so patterns work
+whether or not they include the `i` flag.
+
 #### Removing words with `stopwords_regex`
 
 ```javascript

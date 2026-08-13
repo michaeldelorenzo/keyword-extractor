@@ -391,6 +391,25 @@ describe("extractor", function(){
                 });
                 extraction_result.should.eql(["weighed"]);
             });
+
+            it("should not mutate a caller-supplied global/sticky regex's lastIndex", function(){
+                var shared_regex = /^\d+[a-z]+$/gi;
+                extractor.extract("10lbs 10kg weighed", {
+                    language: "en",
+                    stopwords_regex: [shared_regex]
+                });
+                shared_regex.lastIndex.should.eql(0);
+            });
+
+            it("should match a case-sensitive pattern against the original-case word, not just the lowercased form", function(){
+                var extraction_result = extractor.extract("The ABC123 unit failed but xyz456 passed.", {
+                    language: "en",
+                    stopwords_regex: [/^[A-Z]+\d+$/]
+                });
+                //  "ABC123" is removed (matches the original-case pattern), "xyz456" is kept
+                //  ("the"/"but" are removed as ordinary English stopwords, unrelated to the regex)
+                extraction_result.should.eql(["unit","failed","xyz456","passed"]);
+            });
         });
 
         it("should return an array of 'keywords' for a Turkish string", function(){
