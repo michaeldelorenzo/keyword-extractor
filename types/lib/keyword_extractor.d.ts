@@ -8,6 +8,7 @@ type ExtractionOptions = {
   remove_duplicates?: boolean;
   return_max_ngrams?: number | false;
   stopwords?: string[];
+  stopwords_regex?: RegExp[];
 } & GetStopwordsOptions;
 
 /** Provides the list of supported ISO 639-1 language codes */

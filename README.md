@@ -114,6 +114,21 @@ return_changed_case | The case of the extracted keywords. Setting the value to _
 return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
 remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults to _false_ )
 return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_ | _integer_ , _false_ (defaults to _false_ )
+stopwords_regex | Removes any word matching one of the given regular expressions, in addition to the language's stopwords list. Useful for filtering out patterns that aren't in a fixed word list, such as units (`10lbs`, `10Kg`), times (`6pm`), or ranges (`1-100`) | Array of `RegExp` (defaults to _[]_ )
+
+Each pattern is tested against both the lowercased and original-case forms of a word, so patterns work
+whether or not they include the `i` flag.
+
+#### Removing words with `stopwords_regex`
+
+```javascript
+const extraction_result = keyword_extractor.extract("He weighed 10lbs at birth and grew to 10Kg, waking at 6pm daily.", {
+    language: "english",
+    stopwords_regex: [/^\d+[a-z]+$/i]
+});
+
+//  extraction_result is ["weighed", "birth", "grew", "waking", "daily"]
+```
 
 
 ## Releases
