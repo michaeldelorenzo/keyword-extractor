@@ -40,6 +40,14 @@ describe("extractor", function(){
           extraction_result.should.eql(["Linux Foundation"]);
         });
 
+        it("should still chain 'keywords' separated by repeated whitespace", function() {
+          var extraction_result = extractor.extract("Linux   \t\n  Foundation", {
+              language:"en",
+              return_chained_words:true
+          });
+          extraction_result.should.eql(["Linux Foundation"]);
+        });
+
         it("should return an array of 'keywords' for an English string", function(){
             var extraction_result = extractor.extract("President Obama woke up Monday facing a Congressional defeat that many in both parties believed could hobble his presidency.",{
                 language:"en",
