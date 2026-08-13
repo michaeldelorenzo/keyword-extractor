@@ -69,6 +69,22 @@ keyword_extractor.extract(sentence,{
 */
 ```
 
+### TypeScript
+
+This package ships its own type declarations, so no `@types` package is needed. Usage is the same, but with
+`import`/typed options:
+
+```typescript
+import keyword_extractor from "keyword-extractor";
+
+const extraction_result: string[] = keyword_extractor.extract(sentence, {
+    language: "english",
+    remove_digits: true,
+    return_changed_case: true,
+    remove_duplicates: false
+});
+```
+
 ### Options Parameters
 
 The second argument of the _extract_ method is an Object of configuration/processing settings for the extraction.
