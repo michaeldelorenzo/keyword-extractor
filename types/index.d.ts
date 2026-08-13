@@ -9,4 +9,8 @@ declare const keyword_extractor: {
   supported_language_codes: string[];
 };
 
+export declare const extract: (str: string, options?: ExtractionOptions) => string[];
+export declare const getStopwords: (options?: GetStopwordsOptions) => string[];
+export declare const supported_language_codes: string[];
+
 export default keyword_extractor;

@@ -33,7 +33,14 @@
     "bugs": {
         "url": "https://github.com/michaeldelorenzo/keyword-extractor/issues"
     },
-    "main": "./index",
+    "main": "./index.js",
+    "exports": {
+        ".": {
+            "types": "./types/index.d.ts",
+            "import": "./index.mjs",
+            "require": "./index.js"
+        }
+    },
     "scripts": {
         "start": "browserify index.js --o bundle.js",
         "test": "mocha -r esm",
@@ -57,6 +64,6 @@
         "serialize-javascript": "^7.1.0"
     },
     "engines": {
-        "node": ">= 0.10.0"
+        "node": ">= 14"
     }
 }
