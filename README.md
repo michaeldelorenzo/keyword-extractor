@@ -83,6 +83,28 @@ remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults 
 return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_ | _integer_ , _false_ (defaults to _false_ )
 
 
+## Releases
+
+This package is released to npm automatically using [semantic-release](https://semantic-release.gitbook.io/semantic-release/).
+Every merge to `main` is analyzed and, if it contains a releasable change, published under the appropriate version bump.
+
+Versioning is driven entirely by commit messages (and, by extension, pull request titles — PRs are typically squash-merged,
+so the PR title becomes the commit message on `main`). Pull request titles must follow the
+[Conventional Commits](https://www.conventionalcommits.org/) specification and are checked automatically by CI:
+
+```
+<type>[optional scope]: <description>
+```
+
+Common types and the version bump they trigger:
+
+Type       | Description                                | Release
+-----------|---------------------------------------------|--------
+`fix`, `perf`, `revert` | A bug fix, performance fix, or revert of a previous commit | Patch
+`feat`     | A new feature                                | Minor
+`refactor`, `docs`, `style`, `test`, `build`, `ci`, `chore` | No user-facing change | None
+Any type with a `BREAKING CHANGE:` footer or a `!` after the type/scope (e.g. `feat!:`) | Breaking API change | Major
+
 ## Credits
 
 The initial stopwords lists are taken from the following sources:

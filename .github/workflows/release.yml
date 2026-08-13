@@ -1,0 +1,53 @@
+# This workflow runs semantic-release on every push to main, determining the
+# next version from conventional commit messages, publishing to npm, and
+# creating a GitHub release with generated notes.
+
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  # Lets @semantic-release/npm publish via npm Trusted Publishing (OIDC)
+  # instead of a long-lived NPM_TOKEN. See the Release step below.
+  id-token: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: make test
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # npm is configured for Trusted Publishing (OIDC) on this package,
+          # so @semantic-release/npm authenticates using the id-token above
+          # and never needs this. Left as a fallback in case Trusted
+          # Publishing is ever removed on the npm side.
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
